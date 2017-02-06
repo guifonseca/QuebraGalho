@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:gravity="center">
+
+        <EditText
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/txEmail"
+                android:layout_width="match_parent"
+                android:hint="Email"
+                android:gravity="top"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"></LinearLayout>
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/txSenha"
+                android:hint="Senha"
+                android:gravity="top"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"></LinearLayout>
+
+        <Button
+                android:text="Entrar"
+                android:layout_width="match_parent"
+                android:id="@+id/btEntrar"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="login"/>
+
+        <TextView
+                android:text="Esqueci minha senha"
+                android:layout_height="50dp"
+                android:id="@+id/txEsqueciSenha"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_weight="0.04" />
+</LinearLayout>
