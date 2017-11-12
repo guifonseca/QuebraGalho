@@ -1,12 +1,16 @@
 package com.app.myapp;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.app.myapp.model.Categorias;
 
 /**
  * Created by Guilherme on 04/02/2017.
@@ -17,18 +21,18 @@ public class CategoryImageAdapter extends BaseAdapter
     private TextView textView;
     private View     gridView;
     private Context  context;
-    private final String[] arrCategorias;
+    private final Categorias categorias;
 
-    public CategoryImageAdapter( Context context, String[] arrCategorias )
+    public CategoryImageAdapter( Context context, Categorias categorias )
     {
         this.context = context;
-        this.arrCategorias = arrCategorias;
+        this.categorias = categorias;
     }
 
     @Override
     public int getCount( )
     {
-        return arrCategorias.length;
+        return categorias.getCategorias( ).size( );
     }
 
     @Override
@@ -59,26 +63,30 @@ public class CategoryImageAdapter extends BaseAdapter
             ImageView imageView = (ImageView)gridView.findViewById( R.id.grid_item_image );
 
             TextView textView = (TextView)gridView.findViewById( R.id.grid_item_label );
-            textView.setText( arrCategorias[position] );
+            textView.setText( categorias.getCategorias( ).get( position ).getNome( ) );
 
-            String categorias = arrCategorias[position];
+            String nomeCategoria = categorias.getCategorias( ).get( position ).getNome( );
+            byte[] bMapArray     = categorias.getCategorias( ).get( position ).getImagem( ).getBytesImagem( );
 
-            if( categorias.equals( "Windows" ) )
+            Bitmap bMap = BitmapFactory.decodeByteArray(bMapArray, 0, bMapArray.length);
+            imageView.setImageBitmap( bMap );
+
+            if( nomeCategoria.equals( "Windows" ) )
             {
                 imageView.setImageResource( R.drawable.windows_logo );
             }
-            else if( categorias.equals( "iOS" ) )
-            {
-                imageView.setImageResource( R.drawable.ios_logo );
-            }
-            else if( categorias.equals( "Blackberry" ) )
-            {
-                imageView.setImageResource( R.drawable.blackberry_logo );
-            }
-            else
-            {
-                imageView.setImageResource( R.drawable.android_logo );
-            }
+//            else if( nomeCategoria.equals( "iOS" ) )
+//            {
+//                imageView.setImageResource( R.drawable.ios_logo );
+//            }
+//            else if( nomeCategoria.equals( "Blackberry" ) )
+//            {
+//                imageView.setImageResource( R.drawable.blackberry_logo );
+//            }
+//            else
+//            {
+//                imageView.setImageResource( R.drawable.android_logo );
+//            }
 
         }
         else

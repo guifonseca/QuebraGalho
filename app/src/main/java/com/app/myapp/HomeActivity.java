@@ -1,5 +1,6 @@
 package com.app.myapp;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,16 +15,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
 import android.widget.TabHost;
+import android.widget.Toast;
+
+import com.app.myapp.model.Categorias;
+import com.app.myapp.rest.CategoriasTask;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 {
     TabHost tabHost;
-
-    private static final String[] arrCategorias = new String[]
-            {
-                    "Hidraulica", "Frete", "Elétrica", "Pedreiro", "Diarista",
-                    "Lazer", "Serviços Gerais", "Massagista", "Segurança"
-            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,10 +50,27 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView)findViewById( R.id.nav_view );
         navigationView.setNavigationItemSelectedListener( this );
 
-        GridView gridView = (GridView)findViewById( R.id.gridCategorias );
-        gridView.setAdapter( new CategoryImageAdapter( this, arrCategorias ) );
+        CategoriasTask downloadCategorias = new CategoriasTask( );
+        Categorias         categorias         = null;
 
-        createTabHost( );
+        try {
+            categorias = downloadCategorias.execute( ).get( );
+        } catch (Exception e) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("teste").setTitle("titulo");
+            AlertDialog dialog = builder.create();
+        }
+
+        if( categorias == null )
+        {
+            Toast toast = Toast.makeText(this, "Hello toast!", Toast.LENGTH_LONG);
+            toast.show();
+        }else {
+            GridView gridView = (GridView) findViewById(R.id.gridCategorias);
+            gridView.setAdapter(new CategoryImageAdapter(this, categorias));
+        }
+
+        createTabHost();
     }
 
     private void createTabHost( )
