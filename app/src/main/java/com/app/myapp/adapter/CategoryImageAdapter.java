@@ -1,4 +1,4 @@
-package com.app.myapp;
+package com.app.myapp.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.app.myapp.R;
 import com.app.myapp.model.Categorias;
 
 /**

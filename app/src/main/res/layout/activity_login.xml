@@ -50,4 +50,12 @@
                 android:layout_width="match_parent"
                 android:gravity="center"
                 android:layout_weight="0.04" />
+
+        <Button
+            android:id="@+id/btCriarConta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="cadastrar"
+            android:text="Criar conta com e-mail" />
 </LinearLayout>

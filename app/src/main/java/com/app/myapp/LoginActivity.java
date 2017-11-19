@@ -19,4 +19,10 @@ public class LoginActivity extends AppCompatActivity
         Intent intent = new Intent( view.getContext( ), HomeActivity.class );
         startActivityForResult( intent, 0 );
     }
+
+    public void cadastrar(View view)
+    {
+        Intent intent = new Intent( view.getContext( ), CadastrarActivity.class );
+        startActivityForResult( intent, 0 );
+    }
 }

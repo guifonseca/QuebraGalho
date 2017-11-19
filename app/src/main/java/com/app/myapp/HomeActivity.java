@@ -17,6 +17,7 @@ import android.widget.GridView;
 import android.widget.TabHost;
 import android.widget.Toast;
 
+import com.app.myapp.adapter.CategoryImageAdapter;
 import com.app.myapp.model.Categorias;
 import com.app.myapp.rest.CategoriasTask;
 
@@ -50,11 +51,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView)findViewById( R.id.nav_view );
         navigationView.setNavigationItemSelectedListener( this );
 
-        CategoriasTask downloadCategorias = new CategoriasTask( );
-        Categorias         categorias         = null;
+        CategoriasTask categoriasTask = new CategoriasTask( );
+        Categorias     categorias         = null;
 
         try {
-            categorias = downloadCategorias.execute( ).get( );
+            categorias = categoriasTask.execute( ).get( );
         } catch (Exception e) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("teste").setTitle("titulo");
