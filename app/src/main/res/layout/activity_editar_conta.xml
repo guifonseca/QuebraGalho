@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TableLayout
+        android:id="@+id/tbLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/lbPrivacidade"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_span="2"
+                android:text="Respeitamos a sua privacidade. Asseguramos que seus dados não serão fornecidos a terceiros." />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/lbNomeCompleto"
+                android:layout_width="132dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingRight="4dp"
+                android:text="Nome Completo:"
+                android:textAlignment="viewEnd" />
+
+            <EditText
+                android:id="@+id/txNomeCompleto"
+                android:layout_width="267dp"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="8dp">
+
+            <TextView
+                android:id="@+id/lbApelido"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingRight="4dp"
+                android:text="Apelido:"
+                android:textAlignment="viewEnd" />
+
+            <EditText
+                android:id="@+id/txApelido"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioGroup
+                android:id="@+id/rbgCPFCNPJ"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:checkedButton="@+id/rbCPF"
+                android:orientation="horizontal"
+                android:paddingRight="4dp"
+                android:textAlignment="viewEnd">
+
+                <RadioButton
+                    android:id="@+id/rbCPF"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="CPF"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/rbCNPJ"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:duplicateParentState="false"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="CNPJ"
+                    android:textSize="12sp" />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/txCPFCNPJ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textSize="14sp" />
+        </TableRow>
+
+    </TableLayout>
+</LinearLayout>

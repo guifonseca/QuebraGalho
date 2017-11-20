@@ -20,9 +20,9 @@ public class LoginActivity extends AppCompatActivity
         startActivityForResult( intent, 0 );
     }
 
-    public void cadastrar(View view)
+    public void criarConta(View view)
     {
-        Intent intent = new Intent( view.getContext( ), CadastrarActivity.class );
+        Intent intent = new Intent( view.getContext( ), CriarContaActivity.class );
         startActivityForResult( intent, 0 );
     }
 }
