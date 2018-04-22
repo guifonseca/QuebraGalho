@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gridServicos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/grid_servicos_item_img"
+        android:layout_width="200px"
+        android:layout_height="200px"
+        android:layout_marginTop="5px"
+        android:layout_weight="0.09"
+        android:gravity="center"
+        android:src="@drawable/android_logo" />
+
+    <LinearLayout
+        android:layout_width="284dp"
+        android:layout_height="200px"
+        android:layout_weight="0.09"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/lbTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="5px"
+            android:layout_weight="0.31"
+            android:ellipsize="none"
+            android:gravity="center"
+            android:maxLines="100"
+            android:scrollHorizontally="false"
+            android:text="@+id/label"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/lbValor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5px"
+            android:layout_weight="0.31"
+            android:ellipsize="none"
+            android:gravity="center"
+            android:maxLines="100"
+            android:scrollHorizontally="false"
+            android:text="@+id/label"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/lbDataCriacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5px"
+            android:layout_weight="0.31"
+            android:ellipsize="none"
+            android:gravity="center"
+            android:maxLines="100"
+            android:scrollHorizontally="false"
+            android:text="@+id/label"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>

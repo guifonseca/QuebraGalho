@@ -48,8 +48,8 @@
                     android:orientation="vertical">
 
                     <GridView
-                        android:id="@+id/gridCategorias"
-                        android:numColumns="3"
+                        android:id="@+id/gridServicos"
+                        android:numColumns="1"
                         android:gravity="center"
                         android:columnWidth="100dp"
                         android:stretchMode="columnWidth"

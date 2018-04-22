@@ -27,7 +27,7 @@ public class CategoriasTask extends AsyncTask<Void, Void, Categorias> {
         Categorias categorias = null;
 
         try {
-            final String url = "http://192.168.25.165:8080/JerseyDemos/rest/categorias";
+            final String url = "http://192.168.25.221:8080/JerseyDemos/rest/categorias";
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
             categorias = restTemplate.getForObject(url, Categorias.class);
@@ -39,6 +39,6 @@ public class CategoriasTask extends AsyncTask<Void, Void, Categorias> {
     }
     @Override
     protected void onPostExecute(Categorias dados) {
-// Faça alguma coisa com os dados
+        // Faça alguma coisa com os dados
     }
 }

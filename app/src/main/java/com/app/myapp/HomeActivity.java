@@ -18,8 +18,11 @@ import android.widget.TabHost;
 import android.widget.Toast;
 
 import com.app.myapp.adapter.CategoryImageAdapter;
+import com.app.myapp.adapter.ServiceListAdapter;
 import com.app.myapp.model.Categorias;
+import com.app.myapp.model.Servicos;
 import com.app.myapp.rest.CategoriasTask;
+import com.app.myapp.rest.ServicosTask;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 {
@@ -51,24 +54,24 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView)findViewById( R.id.nav_view );
         navigationView.setNavigationItemSelectedListener( this );
 
-        CategoriasTask categoriasTask = new CategoriasTask( );
-        Categorias     categorias         = null;
+        ServicosTask servicosTask = new ServicosTask( );
+        Servicos servicos         = null;
 
         try {
-            categorias = categoriasTask.execute( ).get( );
+            servicos = servicosTask.execute( ).get( );
         } catch (Exception e) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("teste").setTitle("titulo");
             AlertDialog dialog = builder.create();
         }
 
-        if( categorias == null )
+        if( servicos == null )
         {
             Toast toast = Toast.makeText(this, "Hello toast!", Toast.LENGTH_LONG);
             toast.show();
         }else {
-            GridView gridView = (GridView) findViewById(R.id.gridCategorias);
-            gridView.setAdapter(new CategoryImageAdapter(this, categorias));
+            GridView gridView = (GridView) findViewById(R.id.gridServicos);
+            gridView.setAdapter(new ServiceListAdapter(this, servicos));
         }
 
         createTabHost();
