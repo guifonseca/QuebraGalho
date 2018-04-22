@@ -14,6 +14,12 @@ import com.app.myapp.R;
 import com.app.myapp.model.Categorias;
 import com.app.myapp.model.Servicos;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class ServiceListAdapter extends BaseAdapter {
 
     private TextView textView;
@@ -65,10 +71,10 @@ public class ServiceListAdapter extends BaseAdapter {
             textView.setText(servicos.getServicos().get(position).getTitulo());
 
             textView = (TextView)gridView.findViewById(R.id.lbValor);
-            textView.setText(servicos.getServicos().get(position).getValor().toString());
+            textView.setText("R$" + servicos.getServicos().get(position).getValor().toString());
 
             textView = (TextView)gridView.findViewById(R.id.lbDataCriacao);
-            textView.setText("teste");
+            textView.setText(new SimpleDateFormat("dd MMM HH:mm", new Locale("PT", "BR")).format(servicos.getServicos().get(position).getDataCriacao()));
 
 //             byte[] bMapArray = servicos.getServicos().get( position ).getImagem( ).getBytesImagem( );
 
