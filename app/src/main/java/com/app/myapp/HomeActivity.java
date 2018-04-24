@@ -1,9 +1,13 @@
 package com.app.myapp;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,11 +22,14 @@ import android.widget.TabHost;
 import android.widget.Toast;
 
 import com.app.myapp.adapter.CategoryImageAdapter;
+import com.app.myapp.adapter.ListaServicosAdapter;
 import com.app.myapp.adapter.ServiceListAdapter;
 import com.app.myapp.model.Categorias;
 import com.app.myapp.model.Servicos;
 import com.app.myapp.rest.CategoriasTask;
 import com.app.myapp.rest.ServicosTask;
+
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 {
@@ -41,8 +48,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                //        .setAction("Action", null).show();
+                Intent intent = new Intent( view.getContext( ), CriarServicoActivity.class );
+                startActivityForResult( intent, 0 );
             }
         });
 
@@ -70,11 +79,37 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             Toast toast = Toast.makeText(this, "Hello toast!", Toast.LENGTH_LONG);
             toast.show();
         }else {
-            GridView gridView = (GridView) findViewById(R.id.gridServicos);
-            gridView.setAdapter(new ServiceListAdapter(this, servicos));
+            //GridView gridView = (GridView) findViewById(R.id.gridServicos);
+            //gridView.setAdapter(new ServiceListAdapter(this, servicos));
+            setupRecycler(servicos);
         }
 
         createTabHost();
+    }
+
+    private void setupRecycler(Servicos servicos) {
+        RecyclerView mRecyclerView;
+
+        ListaServicosAdapter mAdapter;
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_layour_recycler);
+
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
+
+        // Configurando o gerenciador de layout para ser uma lista.
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(layoutManager);
+
+        // Adiciona o adapter que irá anexar os objetos à lista.
+        // Está sendo criado com lista vazia, pois será preenchida posteriormente.
+        mAdapter = new ListaServicosAdapter(servicos.getServicos());
+        mRecyclerView.setAdapter(mAdapter);
+
+        // Configurando um dividr entre linhas, para uma melhor visualização.
+        mRecyclerView.addItemDecoration(
+                new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
     }
 
     private void createTabHost( )

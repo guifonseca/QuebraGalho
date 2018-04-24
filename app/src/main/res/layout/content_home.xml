@@ -47,15 +47,11 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <GridView
-                        android:id="@+id/gridServicos"
-                        android:numColumns="1"
-                        android:gravity="center"
-                        android:columnWidth="100dp"
-                        android:stretchMode="columnWidth"
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_view_layour_recycler"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingTop="16dp"/>
+                        tools:listitem="@layout/lista_servicos"/>
 
                 </LinearLayout>
 
