@@ -2,6 +2,7 @@ package com.app.myapp.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.app.myapp.R;
@@ -9,7 +10,6 @@ import com.app.myapp.holder.ListaServicosHolder;
 import com.app.myapp.model.Servico;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -23,8 +23,10 @@ public class ListaServicosAdapter extends RecyclerView.Adapter<ListaServicosHold
 
     @Override
     public ListaServicosHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ListaServicosHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.lista_servicos, parent, false));
+        View itemLayoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.lista_servicos, null);
+
+        ListaServicosHolder viewHolder = new ListaServicosHolder(itemLayoutView);
+        return viewHolder;
     }
 
     @Override
