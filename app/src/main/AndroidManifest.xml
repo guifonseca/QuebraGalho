@@ -37,10 +37,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.app.myapp.HomeActivity" />
         </activity>
-        <activity
-            android:name=".ListaCategoriasActivity"
-            android:label="Lista" />
-        <activity android:name=".ListaRegiaoActivity"></activity>
+        <activity android:name=".ListaCategoriasActivity"
+                  android:label="Categorias" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.app.myapp.HomeActivity" />
+        </activity>
+        <activity android:name=".ListaRegiaoActivity"
+                  android:label="Região" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.app.myapp.HomeActivity" />
+        </activity>
     </application>
 
 </manifest>
