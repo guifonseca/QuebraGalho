@@ -110,7 +110,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void loadData() {
 
         for (int i = ival; i <= loadLimit && i <= servicos.getServicos().size(); i++) {
-            Servico servico = servicos.getServicos().get(i-1);
+            Servico servico = servicos.getServicos().get(i - 1);
 
             listaServicos.add(servico);
             ival++;
@@ -122,7 +122,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         loadLimit = ival + 10;
 
         for (int i = ival; i <= loadLimit && i <= servicos.getServicos().size(); i++) {
-            Servico servico = servicos.getServicos().get(i-1);
+            Servico servico = servicos.getServicos().get(i - 1);
 
             listaServicos.add(servico);
             ival++;
@@ -137,24 +137,46 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         host.setup();
 
         //Tab 1
-        TabHost.TabSpec spec = host.newTabSpec("Região");
+        TabHost.TabSpec spec = host.newTabSpec("tabRegiao");
         spec.setContent(R.id.tab1);
         spec.setIndicator("Região");
         host.addTab(spec);
 
         //Tab 2
-        spec = host.newTabSpec("Categoria");
-        spec.setContent(R.id.tab2);
+        spec = host.newTabSpec("tabCategoria");
+        spec.setContent(R.id.tab1);
         spec.setIndicator("Categoria");
         host.addTab(spec);
 
         //Tab 3
-        spec = host.newTabSpec("Filtro");
-        spec.setContent(R.id.tab3);
+        spec = host.newTabSpec("tabFiltro");
+        spec.setContent(R.id.tab1);
         spec.setIndicator("Filtro");
         host.addTab(spec);
 
         host.setCurrentTab(1);
+
+        host.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                Intent intent;
+
+                switch (tabId) {
+                    case "tabRegiao":
+                        intent = new Intent(getApplicationContext(), ListaRegiaoActivity.class);
+                        startActivityForResult(intent, 0);
+                        break;
+
+                    case "tabCategoria":
+                        intent = new Intent(getApplicationContext(), ListaCategoriasActivity.class);
+                        startActivityForResult(intent, 0);
+                        break;
+
+                    case "tabFiltro":
+                        break;
+                }
+            }
+        });
     }
 
     @Override

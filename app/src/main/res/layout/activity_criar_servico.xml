@@ -11,20 +11,26 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editText"
+        <ImageButton
+            android:id="@+id/imageButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Título *" />
+            app:srcCompat="@android:drawable/ic_input_add" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/txTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textMultiLine"
-            android:text="Descrição *" />
+            android:hint="Título *"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/txDescricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Descrição *"
+            android:inputType="textMultiLine" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
