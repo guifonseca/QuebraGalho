@@ -13,51 +13,56 @@
 
         <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="132dp">
+            android:layout_height="320px">
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal" >
+                android:layout_height="320px"
+                android:orientation="horizontal">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/imgServico1"
                     android:layout_width="300px"
                     android:layout_height="300px"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@android:drawable/ic_menu_add" />
+                    android:src="@drawable/android_logo"
+                    app:civ_border_color="@color/colorAccent"
+                    app:civ_border_width="3dp" />
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/imgServico2"
                     android:layout_width="300px"
                     android:layout_height="300px"
-                    android:layout_weight="1"
+                    android:src="@drawable/android_logo"
                     android:visibility="gone"
-                    app:srcCompat="@drawable/blackberry_logo" />
+                    app:civ_border_color="@color/colorAccent"
+                    app:civ_border_width="3dp" />
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/imgServico3"
                     android:layout_width="300px"
                     android:layout_height="300px"
-                    android:layout_weight="1"
+                    android:src="@drawable/android_logo"
                     android:visibility="gone"
-                    app:srcCompat="@drawable/ic_launcher" />
+                    app:civ_border_color="@color/colorAccent"
+                    app:civ_border_width="3dp" />
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/imgServico4"
                     android:layout_width="300px"
                     android:layout_height="300px"
-                    android:layout_weight="1"
+                    android:src="@drawable/android_logo"
                     android:visibility="gone"
-                    app:srcCompat="@drawable/ic_menu_camera" />
+                    app:civ_border_color="@color/colorAccent"
+                    app:civ_border_width="3dp" />
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/imgServico5"
                     android:layout_width="300px"
                     android:layout_height="300px"
-                    android:layout_weight="1"
+                    android:src="@drawable/android_logo"
                     android:visibility="gone"
-                    app:srcCompat="@drawable/android_logo" />
+                    app:civ_border_color="@color/colorAccent"
+                    app:civ_border_width="3dp" />
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -77,4 +82,16 @@
             android:hint="Descrição *"
             android:inputType="textMultiLine" />
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/android_logo" />
+    </FrameLayout>
 </android.support.constraint.ConstraintLayout>

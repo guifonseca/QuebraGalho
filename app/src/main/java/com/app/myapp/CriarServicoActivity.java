@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -92,7 +93,7 @@ public class CriarServicoActivity extends AppCompatActivity {
             if (imgNext != null)
                 imgNext.setVisibility(ImageView.VISIBLE);
         } catch (Exception e) {
-
+            Log.e("CriarServicoActivity", e.getMessage(), e);
         }
     }
 }
