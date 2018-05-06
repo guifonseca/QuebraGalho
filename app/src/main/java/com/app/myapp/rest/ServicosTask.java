@@ -15,7 +15,7 @@ public class ServicosTask extends AsyncTask<Void, Void, Servicos> {
         Servicos servicos = null;
 
         try {
-            final String url = "http://192.168.25.221:8080/JerseyDemos/rest/servicos";
+            final String url = "http://192.168.25.221:8080/QueroUmTrampoWebService/rest/servicos";
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
             servicos = restTemplate.getForObject(url, Servicos.class);

@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TabHost;
 import android.widget.Toast;
 
@@ -60,7 +61,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.active_home);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -84,7 +85,23 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             setupRecycler();
         }
 
-        createTabHost();
+        Button btRegiao = (Button) findViewById(R.id.btRegiao);
+
+        btRegiao.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(v.getContext(), ListaRegiaoActivity.class), 0);
+            }
+        });
+
+        Button btCategorias = (Button) findViewById(R.id.btCategorias);
+
+        btCategorias.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(v.getContext(), ListaCategoriasActivity.class), 0);
+            }
+        });
     }
 
     private void setupRecycler() {
@@ -129,54 +146,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
 
         //mAdapter.notifyDataSetChanged();
-    }
-
-
-    private void createTabHost() {
-        TabHost host = (TabHost) findViewById(R.id.tabHome);
-        host.setup();
-
-        //Tab 1
-        TabHost.TabSpec spec = host.newTabSpec("tabRegiao");
-        spec.setContent(R.id.tab1);
-        spec.setIndicator("Região");
-        host.addTab(spec);
-
-        //Tab 2
-        spec = host.newTabSpec("tabCategoria");
-        spec.setContent(R.id.tab1);
-        spec.setIndicator("Categoria");
-        host.addTab(spec);
-
-        //Tab 3
-        spec = host.newTabSpec("tabFiltro");
-        spec.setContent(R.id.tab1);
-        spec.setIndicator("Filtro");
-        host.addTab(spec);
-
-        host.setCurrentTab(1);
-
-        host.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-            @Override
-            public void onTabChanged(String tabId) {
-                Intent intent;
-
-                switch (tabId) {
-                    case "tabRegiao":
-                        intent = new Intent(getApplicationContext(), ListaRegiaoActivity.class);
-                        startActivityForResult(intent, 0);
-                        break;
-
-                    case "tabCategoria":
-                        intent = new Intent(getApplicationContext(), ListaCategoriasActivity.class);
-                        startActivityForResult(intent, 0);
-                        break;
-
-                    case "tabFiltro":
-                        break;
-                }
-            }
-        });
     }
 
     @Override
