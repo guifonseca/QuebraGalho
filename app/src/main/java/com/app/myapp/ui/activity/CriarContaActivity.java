@@ -1,4 +1,4 @@
-package com.app.myapp;
+package com.app.myapp.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.app.myapp.R;
 import com.app.myapp.validate.ValidaCadastroUsuario;
 
 /**

@@ -1,4 +1,4 @@
-package com.app.myapp;
+package com.app.myapp.ui.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.app.myapp.R;
 import com.app.myapp.util.MaskEditTextChangedListener;
 
 /**

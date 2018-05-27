@@ -3,18 +3,10 @@ package com.app.myapp.rest;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.app.myapp.HomeActivity;
 import com.app.myapp.model.Categorias;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 /**
  * Created by Guilherme on 11/11/2017.

@@ -1,9 +1,11 @@
-package com.app.myapp;
+package com.app.myapp.ui.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.app.myapp.R;
 
 public class LoginActivity extends AppCompatActivity
 {

@@ -1,7 +1,9 @@
-package com.app.myapp;
+package com.app.myapp.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.app.myapp.R;
 
 public class ListaCategoriasActivity extends AppCompatActivity {
 
