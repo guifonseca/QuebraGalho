@@ -5,42 +5,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.myapp.R;
-import com.app.myapp.model.ImagemCategoria;
 
-import java.util.ArrayList;
-import java.util.List;
+public class ListaRegiaoAdapter extends BaseAdapter {
 
-/**
- * Created by Guilherme on 04/02/2017.
- */
-
-public class CategoryImageAdapter extends BaseAdapter {
-    private TextView textView;
-    private View gridView;
+    private String[] estados;
     private Context context;
-    private List<ImagemCategoria> list = new ArrayList<ImagemCategoria>();
+    private View gridView;
 
-    public CategoryImageAdapter(Context context, List<ImagemCategoria> list) {
+    public ListaRegiaoAdapter(Context context, String[] estados){
         this.context = context;
-        this.list = list;
+        this.estados = estados;
     }
 
     @Override
     public int getCount() {
-        return list.size();
+        return estados.length;
     }
 
     @Override
-    public Object getItem(int i) {
+    public Object getItem(int position) {
         return null;
     }
 
     @Override
-    public long getItemId(int i) {
+    public long getItemId(int position) {
         return 0;
     }
 
@@ -54,10 +45,7 @@ public class CategoryImageAdapter extends BaseAdapter {
             gridView = inflater.inflate(R.layout.lista_categorias, null);
 
             TextView textView = (TextView) gridView.findViewById(R.id.grid_item_label);
-            textView.setText(list.get(position).getNome());
-
-            ImageView imageView = (ImageView) gridView.findViewById(R.id.grid_item_image);
-            imageView.setImageDrawable(list.get(position).getImagem());
+            textView.setText(estados[position]);
 
         } else
             gridView = (View) convertView;
