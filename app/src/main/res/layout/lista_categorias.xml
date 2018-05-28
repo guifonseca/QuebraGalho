@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120px"
+    android:layout_height="155px"
     android:gravity="left"
     android:orientation="horizontal"
     android:weightSum="1">
 
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/grid_item_image"
-        android:layout_width="110px"
-        android:layout_height="110px"
+        android:layout_width="145px"
+        android:layout_height="145px"
         android:layout_margin="5px"
         android:src="@drawable/android_logo" />
 
@@ -27,6 +27,7 @@
         android:maxLines="100"
         android:scrollHorizontally="false"
         android:text="@+id/label"
-        android:textSize="14sp"></TextView>
+        android:textColor="@android:color/black"
+        android:textSize="16sp"></TextView>
 
 </LinearLayout>

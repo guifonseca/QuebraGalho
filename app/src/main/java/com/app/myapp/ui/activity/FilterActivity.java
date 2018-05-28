@@ -50,10 +50,6 @@ public class FilterActivity extends BaseActivity {
             case R.id.btRegiao:
                 startFragment(R.id.home_fragment, new ListaRegiaoFragment());
                 break;
-            case R.id.lista_regiao:
-            case R.id.lista_categorias:
-                startFragment(R.id.home_fragment, new HomeFragment());
-                break;
             default:
                 break;
         }
