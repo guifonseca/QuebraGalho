@@ -1,15 +1,14 @@
-package com.app.myapp.ui.fragment;
-
+package com.app.myapp.ui.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -20,11 +19,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
-public class CriarServicoFragment extends Fragment {
+public class CriarTrampoActivity extends AppCompatActivity {
 
     private static final int GET_IMG_FILE_1 = 1;
     private static final int GET_IMG_FILE_2 = 2;
@@ -32,30 +27,31 @@ public class CriarServicoFragment extends Fragment {
     private static final int GET_IMG_FILE_4 = 4;
     private static final int GET_IMG_FILE_5 = 5;
 
-    private View view;
-
-    public CriarServicoFragment() {
-        // Required empty public constructor
-    }
-
+    private Toolbar mToolbar;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_criar_servico, container, false);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_criar_trampo);
+
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+
+        getSupportActionBar().setTitle("Novo Trampo");
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         configHorizontalScrollView();
-
-        return view;
     }
 
     private void configHorizontalScrollView() {
         Map<Integer, ImageView> mapImg = new HashMap<Integer, ImageView>();
 
-        mapImg.put(GET_IMG_FILE_1, (ImageView) view.findViewById(R.id.imgServico1));
-        mapImg.put(GET_IMG_FILE_2, (ImageView) view.findViewById(R.id.imgServico2));
-        mapImg.put(GET_IMG_FILE_3, (ImageView) view.findViewById(R.id.imgServico3));
-        mapImg.put(GET_IMG_FILE_4, (ImageView) view.findViewById(R.id.imgServico4));
-        mapImg.put(GET_IMG_FILE_5, (ImageView) view.findViewById(R.id.imgServico5));
+        mapImg.put(GET_IMG_FILE_1, (ImageView) findViewById(R.id.imgServico1));
+        mapImg.put(GET_IMG_FILE_2, (ImageView) findViewById(R.id.imgServico2));
+        mapImg.put(GET_IMG_FILE_3, (ImageView) findViewById(R.id.imgServico3));
+        mapImg.put(GET_IMG_FILE_4, (ImageView) findViewById(R.id.imgServico4));
+        mapImg.put(GET_IMG_FILE_5, (ImageView) findViewById(R.id.imgServico5));
 
         for (final Map.Entry<Integer, ImageView> entry : mapImg.entrySet()) {
             entry.getValue().setOnClickListener(new ImageButton.OnClickListener() {
@@ -83,26 +79,26 @@ public class CriarServicoFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case GET_IMG_FILE_1:
-                writeImageFile(data, (ImageView) view.findViewById(R.id.imgServico1), (ImageView) view.findViewById(R.id.imgServico2));
+                writeImageFile(data, (ImageView) findViewById(R.id.imgServico1), (ImageView) findViewById(R.id.imgServico2));
                 break;
             case GET_IMG_FILE_2:
-                writeImageFile(data, (ImageView) view.findViewById(R.id.imgServico2), (ImageView) view.findViewById(R.id.imgServico3));
+                writeImageFile(data, (ImageView) findViewById(R.id.imgServico2), (ImageView) findViewById(R.id.imgServico3));
                 break;
             case GET_IMG_FILE_3:
-                writeImageFile(data, (ImageView) view.findViewById(R.id.imgServico3), (ImageView) view.findViewById(R.id.imgServico4));
+                writeImageFile(data, (ImageView) findViewById(R.id.imgServico3), (ImageView) findViewById(R.id.imgServico4));
                 break;
             case GET_IMG_FILE_4:
-                writeImageFile(data, (ImageView) view.findViewById(R.id.imgServico4), (ImageView) view.findViewById(R.id.imgServico5));
+                writeImageFile(data, (ImageView) findViewById(R.id.imgServico4), (ImageView) findViewById(R.id.imgServico5));
                 break;
             case GET_IMG_FILE_5:
-                writeImageFile(data, (ImageView) view.findViewById(R.id.imgServico5), null);
+                writeImageFile(data, (ImageView) findViewById(R.id.imgServico5), null);
                 break;
         }
     }
 
     private void writeImageFile(Intent data, ImageView img, ImageView imgNext) {
         try {
-            InputStream is = view.getContext().getContentResolver().openInputStream(data.getData());
+            InputStream is = getContentResolver().openInputStream(data.getData());
             Bitmap bitmap = BitmapFactory.decodeStream(is);
             is.close();
 

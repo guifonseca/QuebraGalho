@@ -1,26 +1,27 @@
 package com.app.myapp.ui.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
 
 import com.app.myapp.R;
+import com.app.myapp.callbacks.IActivityCallback;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements IActivityCallback {
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutID());
+
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
     }
 
     public void startFragment(int fragmentID, Fragment fragment) {
@@ -35,6 +36,26 @@ public abstract class BaseActivity extends AppCompatActivity {
             fm.beginTransaction()
                     .replace(fragmentID, fragment)
                     .commitAllowingStateLoss();
+        }
+    }
+
+    public void setScreenTitle(String title) {
+        if (null != title) {
+            if (null != mToolbar) {
+                mToolbar.setTitle(title);
+            } else if (null != getSupportActionBar()) {
+                getSupportActionBar().setTitle(title);
+            }
+        }
+    }
+
+    public void setScreenSubtitle(String title) {
+        if (null != title) {
+            if (null != mToolbar) {
+                mToolbar.setSubtitle(title);
+            } else if (null != getSupportActionBar()) {
+                getSupportActionBar().setSubtitle(title);
+            }
         }
     }
 

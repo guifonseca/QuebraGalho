@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.activity.CriarTrampoActivity"
+    tools:showIn="@layout/activity_criar_trampo">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,6 +26,7 @@
                     android:id="@+id/imgServico1"
                     android:layout_width="300px"
                     android:layout_height="300px"
+                    android:padding="5dp"
                     android:src="@drawable/android_logo"
                     app:civ_border_color="@color/colorAccent"
                     app:civ_border_width="3dp" />
@@ -31,6 +35,7 @@
                     android:id="@+id/imgServico2"
                     android:layout_width="300px"
                     android:layout_height="300px"
+                    android:padding="5dp"
                     android:src="@drawable/android_logo"
                     android:visibility="gone"
                     app:civ_border_color="@color/colorAccent"
@@ -40,6 +45,7 @@
                     android:id="@+id/imgServico3"
                     android:layout_width="300px"
                     android:layout_height="300px"
+                    android:padding="5dp"
                     android:src="@drawable/android_logo"
                     android:visibility="gone"
                     app:civ_border_color="@color/colorAccent"
@@ -49,6 +55,7 @@
                     android:id="@+id/imgServico4"
                     android:layout_width="300px"
                     android:layout_height="300px"
+                    android:padding="5dp"
                     android:src="@drawable/android_logo"
                     android:visibility="gone"
                     app:civ_border_color="@color/colorAccent"
@@ -58,6 +65,7 @@
                     android:id="@+id/imgServico5"
                     android:layout_width="300px"
                     android:layout_height="300px"
+                    android:padding="5dp"
                     android:src="@drawable/android_logo"
                     android:visibility="gone"
                     app:civ_border_color="@color/colorAccent"
@@ -93,4 +101,5 @@
             android:layout_height="match_parent"
             app:srcCompat="@drawable/android_logo" />
     </FrameLayout>
+
 </android.support.constraint.ConstraintLayout>

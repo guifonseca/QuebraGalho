@@ -1,38 +1,28 @@
 package com.app.myapp.ui.activity;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
+import android.support.design.widget.BottomNavigationView;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.app.myapp.Constant;
 import com.app.myapp.R;
-import com.app.myapp.ui.fragment.CriarServicoFragment;
 import com.app.myapp.ui.fragment.HomeFragment;
+import com.app.myapp.ui.fragment.ListaCategoriasFragment;
+import com.app.myapp.ui.fragment.ListaRegiaoFragment;
 
-public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends BaseActivity {
+
+    private BottomNavigationView mBottomNavigationView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.active_home);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        onSetupNavigation(getIntent().getIntExtra(Constant.EXTRA.CONTENT, 0));
+        mBottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        startFragment(R.id.home_fragment, new HomeFragment());
+        onSetupBottomNavigation();
     }
 
     @Override
@@ -40,60 +30,29 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         return R.layout.activity_home;
     }
 
-    private void onSetupNavigation(int itemID) {
-        switch (itemID) {
-            case R.id.fab:
-                startFragment(R.id.home_fragment, new CriarServicoFragment());
-                break;
-            default:
-                startFragment(R.id.home_fragment, new HomeFragment());
-                break;
-        }
-    }
+    private void onSetupBottomNavigation() {
+        mBottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_home:
+                                startFragment(R.id.home_fragment, new HomeFragment());
+                                break;
+                            case R.id.action_regiao:
+                                startFragment(R.id.home_fragment, new ListaRegiaoFragment());
+                                break;
+                            case R.id.action_categoria:
+                                startFragment(R.id.home_fragment, new ListaCategoriasFragment());
+                                break;
+                            default:
+                                break;
+                        }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        switch (id) {
-            case R.id.nav_servicos:
-                // Handle the camera action
-                break;
-
-            case R.id.nav_inserir_servicos:
-                break;
-
-            case R.id.nav_chat:
-                break;
-
-            case R.id.nav_fale_conosco:
-                break;
-
-            case R.id.nav_share:
-                break;
-
-            case R.id.nav_send:
-                break;
-
-            default:
-                break;
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.active_home);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.active_home);
-
-        if (drawer.isDrawerOpen(GravityCompat.START))
-            drawer.closeDrawer(GravityCompat.START);
-        else
-            super.onBackPressed();
+                        return true;
+                    }
+                }
+        );
     }
 
     @Override

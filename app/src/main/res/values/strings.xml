@@ -154,4 +154,5 @@
         <item>Tocantins</item>
     </string-array>
     <string name="title_activity_filter">FilterActivity</string>
+    <string name="title_activity_criar_trampo">CriarTrampoActivity</string>
 </resources>
