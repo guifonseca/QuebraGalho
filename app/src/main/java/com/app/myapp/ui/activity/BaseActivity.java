@@ -21,7 +21,14 @@ public abstract class BaseActivity extends AppCompatActivity implements IActivit
         setContentView(getLayoutID());
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (null != mToolbar)
+            onSetupActionBar();
+    }
+
+    private void onSetupActionBar() {
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     public void startFragment(int fragmentID, Fragment fragment) {
