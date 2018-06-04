@@ -24,6 +24,7 @@
         <activity
             android:name=".ui.activity.HomeActivity"
             android:label="Página Inicial"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
