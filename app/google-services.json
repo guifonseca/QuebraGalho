@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "686809864686",
+    "firebase_url": "https://queroumtrampo-ebe57.firebaseio.com",
+    "project_id": "queroumtrampo-ebe57",
+    "storage_bucket": "queroumtrampo-ebe57.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686809864686:android:2a733dc5120a376a",
+        "android_client_info": {
+          "package_name": "com.app.queroumtrampo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "686809864686-pmm4v41e2crv8clbnbbis5915dsfjp9q.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "686809864686-pmm4v41e2crv8clbnbbis5915dsfjp9q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVK21G-5HzzkpQLxp11oECYfkLJsJ1RkY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

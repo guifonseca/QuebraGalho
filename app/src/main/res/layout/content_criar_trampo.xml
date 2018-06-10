@@ -88,18 +88,12 @@
             android:ems="10"
             android:hint="Descrição *"
             android:inputType="textMultiLine" />
-    </LinearLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-        <ImageView
-            android:id="@+id/imageView7"
+        <Button
+            android:id="@+id/btTipoTrampo"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/android_logo" />
-    </FrameLayout>
+            android:layout_height="wrap_content"
+            android:text="Tipo de Trampo" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
