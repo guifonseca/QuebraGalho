@@ -34,7 +34,12 @@
         <activity
             android:name=".ui.activity.CriarTrampoActivity"
             android:label="@string/title_activity_criar_trampo"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activity.FullscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_fullscreen"
+            android:theme="@style/FullscreenTheme"></activity>
     </application>
 
 </manifest>

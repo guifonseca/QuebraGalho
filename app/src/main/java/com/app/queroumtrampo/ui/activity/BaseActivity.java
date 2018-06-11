@@ -1,6 +1,7 @@
 package com.app.queroumtrampo.ui.activity;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,8 +13,12 @@ import android.view.View;
 import com.app.queroumtrampo.R;
 import com.app.queroumtrampo.callbacks.IActivityCallback;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class BaseActivity extends AppCompatActivity implements IActivityCallback {
     private Toolbar mToolbar;
+    private Map<Integer, Bitmap> map = new HashMap<Integer, Bitmap>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,6 +69,16 @@ public abstract class BaseActivity extends AppCompatActivity implements IActivit
                 getSupportActionBar().setSubtitle(title);
             }
         }
+    }
+
+    @Override
+    public void addBitmap(int imageId, Bitmap bitmap) {
+        map.put(imageId, bitmap);
+    }
+
+    @Override
+    public Bitmap getBitmap(int imageId) {
+        return map.get(imageId);
     }
 
     public abstract int getLayoutID();
