@@ -1,22 +1,25 @@
 package com.app.queroumtrampo.ui.activity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.app.queroumtrampo.Constant;
 import com.app.queroumtrampo.R;
 
 import java.io.File;
 import java.io.FileInputStream;
+
+import static com.app.queroumtrampo.Constant.EXTRA.IMAGE;
+import static com.app.queroumtrampo.Constant.EXTRA.IMAGE_DIRECTORY;
 
 public class FullscreenActivity extends AppCompatActivity {
 
@@ -64,6 +67,7 @@ public class FullscreenActivity extends AppCompatActivity {
             return false;
         }
     };
+    private View mButtonExcluirImagem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +78,7 @@ public class FullscreenActivity extends AppCompatActivity {
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
+        mButtonExcluirImagem = findViewById(R.id.excluir_imagem);
 
         readImage();
 
@@ -84,16 +89,28 @@ public class FullscreenActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.excluir_imagem).setOnTouchListener(mDelayHideTouchListener);
+        mButtonExcluirImagem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String filename = getIntent().getStringExtra(IMAGE);
+                File imgFile = new File(getCacheDir().getAbsolutePath() + "/" + IMAGE_DIRECTORY, filename);
+
+                if (imgFile != null && imgFile.exists())
+                    imgFile.delete();
+
+                setResult(Activity.RESULT_OK);
+                finish();
+            }
+        });
     }
 
-    private void readImage(){
+    private void readImage() {
         try {
-            String filename = getIntent().getStringExtra(Constant.EXTRA.IMAGE);
-            FileInputStream is = new FileInputStream(new File(getCacheDir(), filename));
+            String filename = getIntent().getStringExtra(IMAGE);
+            FileInputStream is = new FileInputStream(new File(getCacheDir().getAbsolutePath() + "/" + IMAGE_DIRECTORY, filename));
             Bitmap bitmap = BitmapFactory.decodeStream(is);
-            ((ImageView)mContentView).setImageBitmap(bitmap);
-        } catch(Exception e) {
+            ((ImageView) mContentView).setImageBitmap(bitmap);
+        } catch (Exception e) {
             Log.e("FullscreenActivity", e.getMessage(), e);
         }
     }
