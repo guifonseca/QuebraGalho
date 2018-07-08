@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.app.queroumtrampo.R;
+import com.app.queroumtrampo.ui.fragment.CriarTrampoFragment;
 import com.app.queroumtrampo.ui.fragment.HomeFragment;
 import com.app.queroumtrampo.ui.fragment.ListaCategoriasFragment;
 import com.app.queroumtrampo.ui.fragment.ListaRegiaoFragment;
@@ -15,14 +18,28 @@ import com.app.queroumtrampo.ui.fragment.ListaRegiaoFragment;
 public class HomeActivity extends BaseActivity {
 
     private BottomNavigationView mBottomNavigationView;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mBottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-        startFragment(R.id.home_fragment, new HomeFragment());
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fab.setVisibility(View.GONE);
+                mBottomNavigationView.setVisibility(View.GONE);
+                startFragment(R.id.home_fragment, new CriarTrampoFragment());
+            }
+        });
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         onSetupBottomNavigation();
+
+        startFragment(R.id.home_fragment, new HomeFragment());
     }
 
     @Override

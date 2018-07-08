@@ -5,6 +5,7 @@ public interface Constant {
         String CONTENT = "content";
         String IMAGE_DIRECTORY = "imagens_novo_trampo";
         String IMAGE = "image";
+        String IMAGE_VIEW_ID = "image_view_id";
     }
 
     interface FILTER {

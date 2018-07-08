@@ -32,7 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IActivit
 
     private void onSetupActionBar() {
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
@@ -69,16 +69,6 @@ public abstract class BaseActivity extends AppCompatActivity implements IActivit
                 getSupportActionBar().setSubtitle(title);
             }
         }
-    }
-
-    @Override
-    public void addBitmap(int imageId, Bitmap bitmap) {
-        map.put(imageId, bitmap);
-    }
-
-    @Override
-    public Bitmap getBitmap(int imageId) {
-        return map.get(imageId);
     }
 
     public abstract int getLayoutID();

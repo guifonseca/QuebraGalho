@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.CriarTrampoActivity">
+    tools:context=".ui.fragment.CriarTrampoFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,6 +11,7 @@
         android:orientation="vertical">
 
         <HorizontalScrollView
+            android:id="@+id/horizontalScrollView"
             android:layout_width="match_parent"
             android:layout_height="320px">
 
@@ -24,7 +25,6 @@
                     android:layout_width="300px"
                     android:layout_height="300px"
                     android:clickable="true"
-                    android:onClick="onClickImage"
                     android:padding="5dp"
                     android:src="@drawable/android_logo"
                     app:civ_border_color="@color/colorAccent"
@@ -35,7 +35,6 @@
                     android:layout_width="300px"
                     android:layout_height="300px"
                     android:clickable="true"
-                    android:onClick="onClickImage"
                     android:padding="5dp"
                     android:src="@drawable/android_logo"
                     android:visibility="gone"
@@ -47,7 +46,6 @@
                     android:layout_width="300px"
                     android:layout_height="300px"
                     android:clickable="true"
-                    android:onClick="onClickImage"
                     android:padding="5dp"
                     android:src="@drawable/android_logo"
                     android:visibility="gone"
@@ -59,7 +57,6 @@
                     android:layout_width="300px"
                     android:layout_height="300px"
                     android:clickable="true"
-                    android:onClick="onClickImage"
                     android:padding="5dp"
                     android:src="@drawable/android_logo"
                     android:visibility="gone"
@@ -71,7 +68,6 @@
                     android:layout_width="300px"
                     android:layout_height="300px"
                     android:clickable="true"
-                    android:onClick="onClickImage"
                     android:padding="5dp"
                     android:src="@drawable/android_logo"
                     android:visibility="gone"
@@ -103,4 +99,4 @@
             android:text="Tipo de Trampo" />
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</FrameLayout>

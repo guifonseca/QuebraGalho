@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.app.queroumtrampo.QueroUmTrampoApplication;
 import com.app.queroumtrampo.R;
 
 import java.io.File;
@@ -92,7 +93,7 @@ public class FullscreenActivity extends AppCompatActivity {
         mButtonExcluirImagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String filename = getIntent().getStringExtra(IMAGE);
+                String filename = (String) QueroUmTrampoApplication.getGlobalObject().get(IMAGE);
                 File imgFile = new File(getCacheDir().getAbsolutePath() + "/" + IMAGE_DIRECTORY, filename);
 
                 if (imgFile != null && imgFile.exists())
@@ -106,7 +107,7 @@ public class FullscreenActivity extends AppCompatActivity {
 
     private void readImage() {
         try {
-            String filename = getIntent().getStringExtra(IMAGE);
+            String filename = (String) QueroUmTrampoApplication.getGlobalObject().get(IMAGE);
             FileInputStream is = new FileInputStream(new File(getCacheDir().getAbsolutePath() + "/" + IMAGE_DIRECTORY, filename));
             Bitmap bitmap = BitmapFactory.decodeStream(is);
             ((ImageView) mContentView).setImageBitmap(bitmap);
